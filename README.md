@@ -19,7 +19,7 @@ Les objectifs principaux sont de :
 
 - **Rapport** : Présente l’ensemble du projet, dont l’installation, la configuration et les tests.  
 - **Partie du code** : Contient les fichiers de configuration et scripts liés au SLAM et à la navigation.  
-- **Vidéo de démonstration finale** : Montre le robot en action
+- **Vidéo de démonstration finale** : Montre le robot en action (dans la TAG version/2025/2/12)
 - **Code officiel** : Comme une partie du code provient directement des tutoriels officiels de TurtleBot3, il n’est pas inclus dans cette branche. Vous pouvez vous référer aux documentations ou dépôts officiels pour l’obtenir.  
 
 ## Utilisation
