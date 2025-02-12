@@ -1,0 +1,36 @@
+<launch> 
+   <include  file = "$(find rplidar_ros)/launch/view_rplidar.launch">
+   </include>
+    <arg name = "robot_name" default = "turtlebot" />
+    <arg name = "scan_topic" default = "scan" />
+    <arg name = "odom_topic" default = "$(arg robot_name)/odom" />
+    <arg name = "laser_frame_id" default = "laser" />
+    <arg name = "global_frame_id" default = "map" />
+    <arg name = "base_frame_id" default = "$(arg robot_name)/base_link" />
+    <arg name = "odom_frame_id" default = "$(arg robot_name)/odom" />
+    <node pkg = "tf" type = "static_transform_publisher" name = "base_link_to_laser" 
+                    args = "0.027 0 0.0705 0 0 0 $(arg base_frame_id) $(arg laser_frame_id) 100"/>
+  <param name="use_sim_time" value="false"/>
+  <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" output="screen"
+        args="-configuration_directory $(find mapping)/config -configuration_basename rplidar.lua">
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+    type="cartographer_occupancy_grid_node"/>
+</launch>
+
+
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: yes
+  wifis:
+    wlan0:
+      dhcp4: yes
+      optional: true
+      access-points:
+        "我的WiFi名称":
+          password: "我的WiFi密码"
